@@ -7,29 +7,28 @@ import pandas as pd
 ########### Define your variables ######
 
 # here's the list of possible columns to choose from.
-list_of_columns =['code', 'state', 'category', 'total exports', 'beef', 'pork', 'poultry',
-       'dairy', 'fruits fresh', 'fruits proc', 'total fruits', 'veggies fresh',
-       'veggies proc', 'total veggies', 'corn', 'wheat', 'cotton']
+list_of_columns =['Cases - cumulative total', 'Deaths - cumulative total']
 
-mycolumn='corn'
-myheading1 = f"Wow! That's a lot of {mycolumn}!"
-mygraphtitle = '2011 US Agriculture Exports by State'
+mycolumn='Cases - cumulative total'
+myheading1 = f"{mycolumn}!"
+mygraphtitle = 'COVID Cases by Country'
 mycolorscale = 'ylorrd' # Note: The error message will list possible color scales.
-mycolorbartitle = "Millions USD"
-tabtitle = 'Old McDonald'
+mycolorbartitle = "Human Count"
+tabtitle = 'COVID 19'
 sourceurl = 'https://plot.ly/python/choropleth-maps/'
-githublink = 'https://github.com/austinlasseter/dash-map-usa-agriculture'
-
+githublink = 'https://github.com/minul-islam/301-old-mcdonald'
 
 ########## Set up the chart
 
 import pandas as pd
-df = pd.read_csv('assets/usa-2011-agriculture.csv')
+df = pd.read_csv('assets/WHO-COVID-19-global-table-data.csv')
+df.reset_index(inplace=True)
+df = df.rename(columns = {'index':'Country'})
 
 fig = go.Figure(data=go.Choropleth(
-    locations=df['code'], # Spatial coordinates
+    locations=df['Country'], # Spatial coordinates
     z = df[mycolumn].astype(float), # Data to be color-coded
-    locationmode = 'USA-states', # set of locations match entries in `locations`
+    locationmode = 'country names', # set of locations match entries in `locations`
     colorscale = mycolorscale,
     colorbar_title = mycolorbartitle,
 ))
