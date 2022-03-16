@@ -1,6 +1,8 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+from dash.dependencies import Input, Output, State
+
 import plotly.graph_objs as go
 import pandas as pd
 
@@ -9,7 +11,6 @@ import pandas as pd
 # here's the list of possible columns to choose from.
 list_of_columns =['Cases - cumulative total', 'Deaths - cumulative total',
                    'Cases - newly reported in last 7 days','Deaths - newly reported in last 7 days']
-
 
 tabtitle = 'COVID 19'
 sourceurl = 'https://plot.ly/python/choropleth-maps/'
