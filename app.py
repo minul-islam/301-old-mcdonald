@@ -35,7 +35,6 @@ fig = go.Figure(data=go.Choropleth(
 
 fig.update_layout(
     title_text = mygraphtitle,
-    geo_scope='usa',
     width=1200,
     height=800
 )
